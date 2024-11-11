@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7msxcevmtjid"]
+
+[ext_resource type="Script" path="res://Acteur/Player/Script/player.gd" id="1_lptw3"]
+[ext_resource type="Texture2D" uid="uid://bfl6m3gvxvdj" path="res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_xkq1r"]
+[ext_resource type="Texture2D" uid="uid://bjo2arjcga1tm" path="res://kenney_pixel-platformer/22.png" id="3_mnwdl"]
+[ext_resource type="Script" path="res://Acteur/Player/Script/gun.gd" id="4_c6exs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgaxc"]
+atlas = ExtResource("1_xkq1r")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daavv"]
+atlas = ExtResource("1_xkq1r")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p8i2"]
+atlas = ExtResource("1_xkq1r")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y1tc"]
+atlas = ExtResource("1_xkq1r")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jba6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgaxc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daavv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p8i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y1tc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07gvd"]
+radius = 11.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_lptw3")
+
+[node name="playerAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6jba6")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.539107
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_07gvd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_bottom = 140
+limit_smoothed = true
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(7, 5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_mnwdl")
+offset = Vector2(6.245, -2.85)
+script = ExtResource("4_c6exs")
+
+[node name="Marker2D" type="Marker2D" parent="Gun"]
+position = Vector2(6, -2)
