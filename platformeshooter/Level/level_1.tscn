@@ -7,7 +7,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oo8k8"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s2mba"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wwme"]
 texture = ExtResource("3_4lbnr")
 0:0/0 = 0
 1:0/0 = 0
@@ -59,9 +59,9 @@ texture = ExtResource("3_4lbnr")
 11:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_krm0l"]
-sources/0 = SubResource("TileSetAtlasSource_s2mba")
+sources/0 = SubResource("TileSetAtlasSource_0wwme")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ga4o2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pq8na"]
 texture = ExtResource("1_lcerj")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -339,7 +339,7 @@ texture_region_size = Vector2i(18, 18)
 20:9/0 = 0
 21:9/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b24op"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwh4p"]
 texture = ExtResource("3_4lbnr")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -386,8 +386,8 @@ texture_region_size = Vector2i(18, 18)
 [sub_resource type="TileSet" id="TileSet_usxaa"]
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ga4o2")
-sources/1 = SubResource("TileSetAtlasSource_b24op")
+sources/0 = SubResource("TileSetAtlasSource_pq8na")
+sources/1 = SubResource("TileSetAtlasSource_wwh4p")
 
 [node name="Level1" type="Node2D"]
 
