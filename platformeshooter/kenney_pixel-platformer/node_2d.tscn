@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca1o4erg5y5jy"]
 
-[ext_resource type="PackedScene" uid="uid://b7msxcevmtjid" path="res://Acteur/Player/player.tscn" id="1_2en6b"]
-[ext_resource type="Texture2D" uid="uid://d1p2ffqwi0i7g" path="res://kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_u0rrg"]
-[ext_resource type="Texture2D" uid="uid://bwbx8ge4f4wbq" path="res://kenney_pixel-platformer/Tilemap/tilemap-backgrounds_packed.png" id="3_jcegu"]
+[ext_resource type="PackedScene" uid="uid://b7msxcevmtjid" path="res://Acteur/Player/player.tscn" id="1_3j2yv"]
+[ext_resource type="Texture2D" uid="uid://d1p2ffqwi0i7g" path="res://kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_c1vax"]
+[ext_resource type="Texture2D" uid="uid://bwbx8ge4f4wbq" path="res://kenney_pixel-platformer/Tilemap/tilemap-backgrounds_packed.png" id="3_c5r7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r8ebk"]
-texture = ExtResource("2_u0rrg")
+texture = ExtResource("2_c1vax")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
@@ -283,7 +283,7 @@ texture_region_size = Vector2i(18, 18)
 21:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q4vr4"]
-texture = ExtResource("3_jcegu")
+texture = ExtResource("3_c5r7i")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 1:0/0 = 0
@@ -334,7 +334,7 @@ sources/1 = SubResource("TileSetAtlasSource_q4vr4")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_2en6b")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_3j2yv")]
 
 [node name="Platform" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_84qgf")

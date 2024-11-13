@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dulkmuoxkwo8d"]
+
+[ext_resource type="Script" path="res://Object/Script/diamant.gd" id="1_qdyku"]
+[ext_resource type="Texture2D" uid="uid://d1p2ffqwi0i7g" path="res://kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_ypydk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i2wd"]
+size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkmjg"]
+atlas = ExtResource("2_ypydk")
+region = Rect2(126, 54, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fc4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkmjg")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="diamant" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_qdyku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8i2wd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2fc4o")
+animation = &"new_animation"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

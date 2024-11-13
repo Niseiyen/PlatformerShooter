@@ -1,21 +1,24 @@
 extends Sprite2D
 
+var can_fire = true
 const BULLET = preload("res://Acteur/Player/Bullet.tscn")
-@onready var marker_2d: Marker2D = $Marker2D
+const OFFSET_X = 10 
+const OFFSET_Y = 1  
 
-func _process(delta):
-	# Rotation de l'arme vers la souris
-	var mouse_position = get_global_mouse_position()
-	var direction = (mouse_position - global_position).normalized()
-	rotation = direction.angle()
+func _ready() -> void:
+	set_as_top_level(true)
+func _physics_process(delta: float) -> void:
+	position.x = lerp(position.x, get_parent().position.x + OFFSET_X, 0.5)
+	position.y = lerp(position.y, get_parent().position.y + OFFSET_Y, 0.5)
 	
-	# Détection du clic gauche pour tirer une balle
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
-
-func shoot():
-	# Instance de la balle et ajout à la scène
-	var bullet_instance = BULLET.instantiate()
-	bullet_instance.position = marker_2d.global_position  
-	bullet_instance.rotation = rotation
-	get_parent().add_child(bullet_instance)
+	var mouse_pos = get_global_mouse_position()
+	look_at(mouse_pos)
+	
+	if Input.is_action_pressed("shoot") and can_fire:
+		var bullet_instance = BULLET.instantiate()
+		bullet_instance.rotation = rotation
+		bullet_instance.global_position = $Marker2D.global_position
+		get_parent().add_child(bullet_instance)
+		can_fire = false
+		await get_tree().create_timer(0.2).timeout
+		can_fire = true

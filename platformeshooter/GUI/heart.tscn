@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn3jmlgra26uv"]
+
+[ext_resource type="Texture2D" uid="uid://cb7h4eo0470fk" path="res://kenney_pixel-platformer/Tiles/tile_0044.png" id="1_ts6tv"]
+
+[node name="heart" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+custom_minimum_size = Vector2(14, 12)
+anchors_preset = -1
+anchor_right = 0.012
+anchor_bottom = 0.019
+offset_right = 0.176
+offset_bottom = -0.312001
+
+[node name="HeartImage" type="Sprite2D" parent="."]
+position = Vector2(7, 6)
+texture = ExtResource("1_ts6tv")

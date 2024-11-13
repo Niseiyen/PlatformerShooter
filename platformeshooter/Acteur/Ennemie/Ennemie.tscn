@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqf6rmjmctkdj"]
+
+[ext_resource type="Texture2D" uid="uid://bfl6m3gvxvdj" path="res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_kgmj1"]
+[ext_resource type="Script" path="res://Acteur/Ennemie/Script/ennemie.gd" id="1_nfe65"]
+[ext_resource type="PackedScene" uid="uid://gkkuly1psfwx" path="res://Object/hit_zone.tscn" id="3_3gs4k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cfjc"]
+atlas = ExtResource("1_kgmj1")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qa6g"]
+atlas = ExtResource("1_kgmj1")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp7bv"]
+atlas = ExtResource("1_kgmj1")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oo5ao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cfjc")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qa6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp7bv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meowu"]
+size = Vector2(15, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir2g1"]
+size = Vector2(15, 13)
+
+[node name="Ennemie" type="Node2D"]
+script = ExtResource("1_nfe65")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_oo5ao")
+animation = &"death"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, -6.5)
+shape = SubResource("RectangleShape2D_meowu")
+
+[node name="hitZone" parent="." instance=ExtResource("3_3gs4k")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitZone"]
+visible = false
+position = Vector2(0.5, -6.5)
+shape = SubResource("RectangleShape2D_ir2g1")
+
+[node name="rayCastDroite" type="RayCast2D" parent="."]
+position = Vector2(-2, -6)
+target_position = Vector2(14, 0)
+
+[node name="rayCastGroundDroite" type="RayCast2D" parent="."]
+position = Vector2(-7, -6)
+target_position = Vector2(0, 12)
+
+[node name="rayCastGroundGauche" type="RayCast2D" parent="."]
+position = Vector2(8, -6)
+target_position = Vector2(0, 12)
+
+[node name="rayCastGauche" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(-11, 0)
+
+[node name="BulletHitZone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitZone"]
+visible = false
+position = Vector2(0.5, -6.5)
+shape = SubResource("RectangleShape2D_ir2g1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

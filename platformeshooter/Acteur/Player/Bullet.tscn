@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d20pmimkkw1p4"]
+[gd_scene load_steps=11 format=3 uid="uid://d20pmimkkw1p4"]
 
 [ext_resource type="Script" path="res://Acteur/Player/Script/bullet.gd" id="1_er7l8"]
 [ext_resource type="Texture2D" uid="uid://wwqj30wou7h3" path="res://kenney_pixel-platformer/Bullet Pixel 8x8 part 1 C.png" id="2_ilslh"]
@@ -53,6 +53,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vrpa"]
+radius = 6.0
+
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
@@ -63,3 +66,14 @@ script = ExtResource("1_er7l8")
 sprite_frames = SubResource("SpriteFrames_w48vf")
 animation = &"Idle"
 autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8vrpa")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.78814e-07, -5.60284e-07)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

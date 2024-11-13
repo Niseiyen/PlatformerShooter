@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7msxcevmtjid"]
+[gd_scene load_steps=12 format=3 uid="uid://b7msxcevmtjid"]
 
 [ext_resource type="Script" path="res://Acteur/Player/Script/player.gd" id="1_lptw3"]
 [ext_resource type="Texture2D" uid="uid://bfl6m3gvxvdj" path="res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_xkq1r"]
@@ -54,11 +54,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_07gvd"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqr2o"]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_lptw3")
 
 [node name="playerAnimation" type="AnimatedSprite2D" parent="."]
+z_index = 5
 sprite_frames = SubResource("SpriteFrames_6jba6")
 animation = &"run"
 autoplay = "idle"
@@ -70,17 +73,31 @@ shape = SubResource("CircleShape2D_07gvd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-limit_bottom = 140
+limit_bottom = 200
 limit_smoothed = true
 
+[node name="hurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+shape = SubResource("CircleShape2D_uqr2o")
+
 [node name="Gun" type="Sprite2D" parent="."]
-light_mask = 0
-position = Vector2(4, 7)
-rotation = -6.28319
+light_mask = 2
+z_index = 6
+position = Vector2(7, 5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_mnwdl")
-offset = Vector2(6.245, -2.85)
+offset = Vector2(1.83, -1.21)
 script = ExtResource("4_c6exs")
 
 [node name="Marker2D" type="Marker2D" parent="Gun"]
-position = Vector2(20, -2)
+position = Vector2(16, 3.09944e-06)
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
