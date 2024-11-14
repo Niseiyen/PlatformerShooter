@@ -7,6 +7,7 @@ const OFFSET_Y = 1
 
 func _ready() -> void:
 	set_as_top_level(true)
+	
 func _physics_process(delta: float) -> void:
 	position.x = lerp(position.x, get_parent().position.x + OFFSET_X, 0.5)
 	position.y = lerp(position.y, get_parent().position.y + OFFSET_Y, 0.5)

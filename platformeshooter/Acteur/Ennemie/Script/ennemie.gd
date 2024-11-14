@@ -5,6 +5,7 @@ extends Node2D
 @onready var ray_cast_droite: RayCast2D = $rayCastDroite
 @onready var ray_cast_ground_droite: RayCast2D = $rayCastGroundDroite
 @onready var ray_cast_ground_gauche: RayCast2D = $rayCastGroundGauche
+@onready var game_manager: Node = %GameManager
 
 @onready var timer: Timer = $Timer
 @onready var hit_zone: Area2D = $hitZone
@@ -12,6 +13,7 @@ extends Node2D
 
 const SPEED = 60
 var direction = 1
+@export var ennemiePointValue: int = 3
 
 var isDead: bool = false
 
@@ -38,6 +40,7 @@ func die() -> void:
 	hit_zone.queue_free()
 	bullet_hit_zone.queue_free()
 	isDead = true
+	game_manager.add_point(ennemiePointValue)
 	timer.start()
 
 func _on_timer_timeout() -> void:
