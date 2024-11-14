@@ -38,16 +38,18 @@ func _process(delta: float) -> void:
 			timer.start()
 
 func _physics_process(delta: float) -> void:
-	# Ajouter la gravité.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		
 	# Gérer le saut.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Obtenir la direction de l'entrée et gérer le mouvement/la décélération.
 	var direction := Input.get_axis("move_left", "move_right")
+	
+	if Input.is_action_just_pressed("move_down") and is_on_floor():
+		position.y += 1.5
 	
 	if direction > 0:
 		player_animation.flip_h = true
@@ -67,7 +69,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	move_and_slide()
+	move_and_slide()			# Ajouter la gravité.
+		
 
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
@@ -94,6 +97,8 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		currentHealth -= 1
 		print("Vie restante:", currentHealth)
 		_start_invincibility_effect()
+	if area.name == "KillZone" and not is_invincible:
+		currentHealth = 0
 		
 		if hearts_container.has_method("update_hearts"):
 			hearts_container.call("update_hearts", currentHealth)

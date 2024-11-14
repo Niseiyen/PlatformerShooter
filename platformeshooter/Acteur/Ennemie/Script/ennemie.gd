@@ -19,7 +19,6 @@ var isDead: bool = false
 
 func _process(delta):
 	if !isDead:
-		# Vérification des collisions des raycasts gauche et droite
 		if ray_cast_droite.is_colliding():
 			direction = -1
 			animated_sprite_2d.flip_h = false
@@ -27,7 +26,6 @@ func _process(delta):
 			direction = 1
 			animated_sprite_2d.flip_h = true
 
-		# Vérification des raycasts pour le sol
 		if !ray_cast_ground_droite.is_colliding() or !ray_cast_ground_gauche.is_colliding():
 			direction = -direction
 			animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h  

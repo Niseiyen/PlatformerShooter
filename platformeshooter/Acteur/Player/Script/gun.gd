@@ -1,6 +1,8 @@
 extends Sprite2D
 
 var can_fire = true
+var fire_rate = 0.5 
+
 const BULLET = preload("res://Acteur/Player/Bullet.tscn")
 const OFFSET_X = 10 
 const OFFSET_Y = 1  
@@ -21,5 +23,5 @@ func _physics_process(delta: float) -> void:
 		bullet_instance.global_position = $Marker2D.global_position
 		get_parent().add_child(bullet_instance)
 		can_fire = false
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(fire_rate).timeout 
 		can_fire = true
