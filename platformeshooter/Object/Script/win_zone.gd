@@ -9,9 +9,7 @@ func load_next_level() -> void:
 	var level_number = current_level.substr(5, current_level.length()) 
 
 	var next_level_number = int(level_number) + 1
-	var next_level_name = "Level" + str(next_level_number)
+	var next_level_name = "level_" + str(next_level_number) + ".tscn"
+	var path = "res://Level/" + next_level_name
+	get_tree().change_scene_to_file(path)
 	
-	if ResourceLoader.exists(next_level_name + ".tscn"): 
-		get_tree().change_scene(next_level_name)  
-	else:
-		print("Le niveau suivant n'existe pas : " + next_level_name)

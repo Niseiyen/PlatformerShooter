@@ -19,6 +19,7 @@ func setup_hearts(max_health: int) -> void:
 	update_hearts(max_health)
 
 func update_hearts(current_health: int) -> void:
+	print("Update Heart")
 	for i in range(hearts.size()):
 		var heart_texture_rect = hearts[i].get_node("HeartImage") 
 		if i < current_health:
