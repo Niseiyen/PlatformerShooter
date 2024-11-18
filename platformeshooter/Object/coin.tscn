@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://wensifaafa7d"]
+[gd_scene load_steps=8 format=3 uid="uid://wensifaafa7d"]
 
 [ext_resource type="Script" path="res://Object/Script/coin.gd" id="1_35x14"]
 [ext_resource type="Texture2D" uid="uid://d1p2ffqwi0i7g" path="res://kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_kytyf"]
+[ext_resource type="AudioStream" uid="uid://beewd8nyhbotd" path="res://Audio/SoundEffect/Coin.mp3" id="3_pk2hs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i2wd"]
 size = Vector2(12, 12)
@@ -39,5 +40,8 @@ shape = SubResource("RectangleShape2D_8i2wd")
 sprite_frames = SubResource("SpriteFrames_2fc4o")
 animation = &"Idle"
 autoplay = "Idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pk2hs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

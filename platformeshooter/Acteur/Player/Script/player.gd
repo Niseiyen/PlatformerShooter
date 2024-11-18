@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
+@onready var jump_sound_effect: AudioStreamPlayer2D = $Jump
 @onready var player_animation: AnimatedSprite2D = $playerAnimation
+@onready var damage_taken: AudioStreamPlayer2D = $DamageTaken
 @onready var invincibility_timer: Timer = $InvincibilityTimer 
 @onready var timer: Timer = $Timer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -44,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	# Gérer le saut.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_sound_effect.play()
 
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -94,9 +97,11 @@ func _on_invincibility_timeout():
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "hitZone" and not is_invincible:
 		currentHealth -= 1
+		damage_taken.play()
 		print("Vie restante:", currentHealth)
 		_start_invincibility_effect()
 	if area.name == "KillZone" and not is_invincible:
+		damage_taken.play()
 		currentHealth = 0
 		
-		hearts_container.update_hearts()
+	hearts_container.update_hearts(currentHealth)

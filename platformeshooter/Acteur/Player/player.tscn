@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7msxcevmtjid"]
+[gd_scene load_steps=14 format=3 uid="uid://b7msxcevmtjid"]
 
 [ext_resource type="Script" path="res://Acteur/Player/Script/player.gd" id="1_lptw3"]
 [ext_resource type="Texture2D" uid="uid://bfl6m3gvxvdj" path="res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_xkq1r"]
 [ext_resource type="Texture2D" uid="uid://bjo2arjcga1tm" path="res://kenney_pixel-platformer/22.png" id="3_mnwdl"]
 [ext_resource type="Script" path="res://Acteur/Player/Script/gun.gd" id="4_c6exs"]
+[ext_resource type="AudioStream" uid="uid://k06pktb3vmxa" path="res://Audio/SoundEffect/Jump.mp3" id="5_dhrct"]
+[ext_resource type="AudioStream" uid="uid://bh7lutl1g2qt2" path="res://Audio/SoundEffect/PlayerDamage.mp3" id="6_1opew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgaxc"]
 atlas = ExtResource("1_xkq1r")
@@ -93,11 +95,22 @@ script = ExtResource("4_c6exs")
 [node name="Marker2D" type="Marker2D" parent="Gun"]
 position = Vector2(16, 3.09944e-06)
 
+[node name="Laser" type="AudioStreamPlayer2D" parent="Gun"]
+position = Vector2(-14, -10)
+scale = Vector2(2, 2)
+
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dhrct")
+volume_db = -5.0
+
+[node name="DamageTaken" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_1opew")
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

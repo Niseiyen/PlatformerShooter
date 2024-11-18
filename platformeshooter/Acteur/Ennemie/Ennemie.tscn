@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqf6rmjmctkdj"]
+[gd_scene load_steps=11 format=3 uid="uid://cqf6rmjmctkdj"]
 
 [ext_resource type="Texture2D" uid="uid://bfl6m3gvxvdj" path="res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_kgmj1"]
 [ext_resource type="Script" path="res://Acteur/Ennemie/Script/ennemie.gd" id="1_nfe65"]
 [ext_resource type="PackedScene" uid="uid://gkkuly1psfwx" path="res://Object/hit_zone.tscn" id="3_3gs4k"]
+[ext_resource type="AudioStream" uid="uid://wxfu1t0inf1o" path="res://Audio/SoundEffect/MonsterDead.mp3" id="4_db4lx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cfjc"]
 atlas = ExtResource("1_kgmj1")
@@ -93,5 +94,8 @@ shape = SubResource("RectangleShape2D_ir2g1")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="MonsterDead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_db4lx")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

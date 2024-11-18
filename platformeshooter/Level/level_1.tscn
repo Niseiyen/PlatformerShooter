@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bp456llylnla2"]
+[gd_scene load_steps=26 format=3 uid="uid://bp456llylnla2"]
 
 [ext_resource type="Texture2D" uid="uid://d1p2ffqwi0i7g" path="res://kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_lcerj"]
 [ext_resource type="PackedScene" uid="uid://b7msxcevmtjid" path="res://Acteur/Player/player.tscn" id="2_yuqhb"]
@@ -13,8 +13,9 @@
 [ext_resource type="Script" path="res://Manager/HeartManager.gd" id="10_w4kjp"]
 [ext_resource type="Script" path="res://Manager/GameManager.gd" id="11_s8wih"]
 [ext_resource type="PackedScene" uid="uid://yq5yjxqlprmm" path="res://Object/win_zone.tscn" id="13_gextu"]
+[ext_resource type="AudioStream" uid="uid://bxachir70byvn" path="res://Audio/Music/Forest.mp3" id="14_o28dy"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wwme"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7awfv"]
 texture = ExtResource("3_4lbnr")
 0:0/0 = 0
 1:0/0 = 0
@@ -66,7 +67,7 @@ texture = ExtResource("3_4lbnr")
 11:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_krm0l"]
-sources/0 = SubResource("TileSetAtlasSource_0wwme")
+sources/0 = SubResource("TileSetAtlasSource_7awfv")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8vme8"]
 
@@ -505,19 +506,19 @@ position = Vector2(1179, -190)
 [node name="--COINS--" type="Node" parent="."]
 
 [node name="Coin" parent="--COINS--" instance=ExtResource("5_plubf")]
-position = Vector2(75, 4)
+position = Vector2(56, 8)
 
 [node name="Coin2" parent="--COINS--" instance=ExtResource("5_plubf")]
-position = Vector2(188, 62)
+position = Vector2(192, 56)
 
 [node name="Coin3" parent="--COINS--" instance=ExtResource("5_plubf")]
-position = Vector2(271, 115)
+position = Vector2(272, 112)
 
 [node name="Coin4" parent="--COINS--" instance=ExtResource("5_plubf")]
-position = Vector2(309, 115)
+position = Vector2(312, 112)
 
 [node name="Coin5" parent="--COINS--" instance=ExtResource("5_plubf")]
-position = Vector2(345, 115)
+position = Vector2(344, 112)
 
 [node name="Coin6" parent="--COINS--" instance=ExtResource("5_plubf")]
 position = Vector2(423, 81)
@@ -527,6 +528,105 @@ position = Vector2(477, 62)
 
 [node name="Coin8" parent="--COINS--" instance=ExtResource("5_plubf")]
 position = Vector2(531, 45)
+
+[node name="Coin9" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(568, 40)
+
+[node name="Coin10" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(624, 40)
+
+[node name="Coin11" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(816, 112)
+
+[node name="Coin12" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(784, 152)
+
+[node name="Coin13" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(711, 151)
+
+[node name="Coin14" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(638, 152)
+
+[node name="Coin15" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(856, 80)
+
+[node name="Coin16" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(912, 40)
+
+[node name="Coin17" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1040, 112)
+
+[node name="Coin18" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1088, 112)
+
+[node name="Coin19" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1144, 80)
+
+[node name="Coin20" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1176, 80)
+
+[node name="Coin21" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1160, 24)
+
+[node name="Coin22" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1233, -12)
+
+[node name="Coin23" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1269, -46)
+
+[node name="Coin24" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1232, -80)
+
+[node name="Coin25" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1177, -117)
+
+[node name="Coin26" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1090, -135)
+
+[node name="Coin27" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1071, -170)
+
+[node name="Coin28" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1071, -170)
+
+[node name="Coin29" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1107, -205)
+
+[node name="Coin30" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1233, 62)
+
+[node name="Coin31" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1264, 80)
+
+[node name="Coin32" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1312, 80)
+
+[node name="Coin33" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1341, 43)
+
+[node name="Coin34" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1408, 24)
+
+[node name="Coin35" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1448, 62)
+
+[node name="Coin36" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1448, 62)
+
+[node name="Coin38" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1520, 80)
+
+[node name="Coin39" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1608, 80)
+
+[node name="Coin40" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1680, 80)
+
+[node name="Coin41" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1752, 80)
+
+[node name="Coin42" parent="--COINS--" instance=ExtResource("5_plubf")]
+position = Vector2(1832, 81)
 
 [node name="--KILLZONE--" type="Node" parent="."]
 
@@ -598,3 +698,9 @@ one_way_collision = true
 position = Vector2(1179, -179)
 shape = SubResource("RectangleShape2D_uy068")
 one_way_collision = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_o28dy")
+volume_db = -7.0
+autoplay = true
+parameters/looping = true
