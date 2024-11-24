@@ -10,5 +10,6 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 
 func _playPickUpSound():
+	print("PlaySound")
 	audio_stream_player_2d.play()
 	

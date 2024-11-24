@@ -12,12 +12,17 @@ extends Node2D
 @onready var hit_zone: Area2D = $hitZone
 @onready var bullet_hit_zone: Area2D = $BulletHitZone
 
-const SPEED = 60
-var direction = 1
+@export var speed = 60
+@export var max_health: int = 1
 @export var ennemiePointValue: int = 3
 
+var health: int = max_health  # Santé actuelle
+var direction = 1
 var isDead: bool = false
 var can_change_direction = true 
+
+func _ready():
+	health = max_health
 
 func _process(delta):
 	if !isDead:
@@ -37,7 +42,20 @@ func _process(delta):
 			disable_direction_change_for_a_moment()
 
 		# Déplacer l'ennemi
-		position.x += direction * SPEED * delta
+		position.x += direction * speed * delta
+
+# Fonction pour infliger des dégâts
+func take_damage(amount: int) -> void:
+	if isDead:
+		return
+
+	health -= amount
+
+	# Change la couleur du sprite pour indiquer les dégâts
+	flash_red()
+
+	if health <= 0:
+		die()
 
 # Fonction pour tuer l'ennemi
 func die() -> void:
@@ -52,8 +70,13 @@ func die() -> void:
 func _on_timer_timeout() -> void:
 	queue_free()
 
-# Fonction asynchrone pour gérer un délai avant de pouvoir changer de direction à nouveau
 func disable_direction_change_for_a_moment() -> void:
 	can_change_direction = false
 	await get_tree().create_timer(0.2).timeout
 	can_change_direction = true
+
+# Fonction pour faire clignoter l'ennemi en rouge
+func flash_red() -> void:
+	animated_sprite_2d.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.2).timeout 
+	animated_sprite_2d.modulate = Color(1, 1, 1)

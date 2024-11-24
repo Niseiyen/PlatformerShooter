@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bd416kyh27w0x"]
+[gd_scene load_steps=29 format=3 uid="uid://bd416kyh27w0x"]
 
 [ext_resource type="Script" path="res://Manager/GameManager.gd" id="1_leum0"]
 [ext_resource type="PackedScene" uid="uid://danf6twsaixy1" path="res://GUI/hearts_container.tscn" id="2_qyp7g"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cqf6rmjmctkdj" path="res://Acteur/Ennemie/Ennemie.tscn" id="11_gw2p7"]
 [ext_resource type="PackedScene" uid="uid://b5h6jdtuk38ry" path="res://Object/kill_zone.tscn" id="12_gbmn2"]
 [ext_resource type="AudioStream" uid="uid://bbtyidsqtod6x" path="res://Audio/Music/Desert.mp3" id="14_swvxr"]
+[ext_resource type="PackedScene" uid="uid://csabxxg0ykc46" path="res://Acteur/Ennemie/BigEnnemie.tscn" id="15_vnn5m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wwme"]
 texture = ExtResource("6_5ydg3")
@@ -480,20 +481,23 @@ position = Vector2(543, -108)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
-[node name="Ennemie4" parent="--ENNEMIE--" instance=ExtResource("11_gw2p7")]
-position = Vector2(492, -107)
-rotation = -3.14159
-scale = Vector2(1, -1)
-
 [node name="Ennemie2" parent="--ENNEMIE--" instance=ExtResource("11_gw2p7")]
 position = Vector2(982, -19)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
-[node name="Ennemie3" parent="--ENNEMIE--" instance=ExtResource("11_gw2p7")]
-position = Vector2(889, -72)
+[node name="BigEnnemie" parent="--ENNEMIE--" instance=ExtResource("15_vnn5m")]
+position = Vector2(885, -72)
 rotation = -3.14159
 scale = Vector2(1, -1)
+speed = 20
+max_health = 2
+
+[node name="BigEnnemie2" parent="--ENNEMIE--" instance=ExtResource("15_vnn5m")]
+position = Vector2(511, -108)
+scale = Vector2(-1, 1)
+speed = 20
+max_health = 2
 
 [node name="--COINS--" type="Node" parent="."]
 

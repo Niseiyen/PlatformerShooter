@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqnublt6pskvu"]
+
+[ext_resource type="Texture2D" uid="uid://bfl6m3gvxvdj" path="res://kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="2_o6kyn"]
+[ext_resource type="PackedScene" uid="uid://gkkuly1psfwx" path="res://Object/hit_zone.tscn" id="3_36clc"]
+
+[sub_resource type="Curve2D" id="Curve2D_72326"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 88, 0, 0, 0, 0, 0, 88, 48, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k4rdc"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_4b6uw"]
+resource_name = "LoopSpike"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathFollow2D/SpikeEnnemie/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 12.5664, 18.8496]
+}
+
+[sub_resource type="Animation" id="Animation_607d4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathFollow2D/SpikeEnnemie/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bls6f"]
+_data = {
+"LoopSpike": SubResource("Animation_4b6uw"),
+"RESET": SubResource("Animation_607d4")
+}
+
+[node name="SpikeEnnemie" type="Path2D"]
+curve = SubResource("Curve2D_72326")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="SpikeEnnemie" type="Node2D" parent="PathFollow2D"]
+
+[node name="hitZone" parent="PathFollow2D/SpikeEnnemie" instance=ExtResource("3_36clc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/SpikeEnnemie/hitZone"]
+shape = SubResource("CircleShape2D_k4rdc")
+
+[node name="Timer" type="Timer" parent="PathFollow2D/SpikeEnnemie"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/SpikeEnnemie"]
+texture = ExtResource("2_o6kyn")
+region_enabled = true
+region_rect = Rect2(191.878, 0, 24.1223, 24.0628)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bls6f")
+}
+autoplay = "LoopSpike"
