@@ -416,7 +416,7 @@ size = Vector2(162, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0246"]
 size = Vector2(36, 5)
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [95.0]
 
 [node name="GameManager" type="Node" parent="."]
@@ -471,9 +471,11 @@ shape = SubResource("RectangleShape2D_h3mo8")
 
 [node name="Ennemie" parent="--ENNEMIE--" instance=ExtResource("9_lt2sc")]
 position = Vector2(604, 107)
+scale = Vector2(-1, 1)
 
 [node name="Ennemie2" parent="--ENNEMIE--" instance=ExtResource("9_lt2sc")]
 position = Vector2(905, 89)
+scale = Vector2(-1, 1)
 
 [node name="Ennemie3" parent="--ENNEMIE--" instance=ExtResource("9_lt2sc")]
 position = Vector2(1404, 89)

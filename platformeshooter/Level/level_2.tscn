@@ -128,7 +128,9 @@ texture_region_size = Vector2i(18, 18)
 12:1/0 = 0
 13:1/0 = 0
 14:1/0 = 0
+14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 15:1/0 = 0
+15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 16:1/0 = 0
 17:1/0 = 0
 18:1/0 = 0
@@ -158,7 +160,9 @@ texture_region_size = Vector2i(18, 18)
 12:2/0 = 0
 13:2/0 = 0
 14:2/0 = 0
+14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 15:2/0 = 0
+15:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 16:2/0 = 0
 17:2/0 = 0
 18:2/0 = 0
@@ -184,7 +188,9 @@ texture_region_size = Vector2i(18, 18)
 12:3/0 = 0
 13:3/0 = 0
 14:3/0 = 0
+14:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 15:3/0 = 0
+15:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 16:3/0 = 0
 17:3/0 = 0
 18:3/0 = 0
@@ -431,7 +437,6 @@ scale = Vector2(4.37427, 4.37427)
 script = ExtResource("3_80gae")
 
 [node name="Controle" parent="CanvasLayer" instance=ExtResource("4_6fxeb")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("5_inl7o")]
 

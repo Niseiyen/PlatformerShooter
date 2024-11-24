@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Object/Script/diamant.gd" id="1_qdyku"]
 [ext_resource type="Texture2D" uid="uid://d1p2ffqwi0i7g" path="res://kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_ypydk"]
-[ext_resource type="AudioStream" uid="uid://toihnlxfqwtj" path="res://Audio/SoundEffect/Diamant.mp3" id="3_8b8io"]
+[ext_resource type="AudioStream" uid="uid://bsd5gq52skh3o" path="res://Audio/SoundEffect/Diamant.mp3" id="3_8b8io"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i2wd"]
 size = Vector2(12, 12)
@@ -35,5 +35,6 @@ animation = &"new_animation"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_8b8io")
+volume_db = 20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
